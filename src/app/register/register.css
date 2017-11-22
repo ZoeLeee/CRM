@@ -1,0 +1,42 @@
+.contact_form>div{
+	position: relative;
+}
+/* === HTML5 validation styles === */	
+.contact_form input:required {
+	background: #fff url('../../assets/img/validate/red_asterisk.png') no-repeat 98% center;
+}
+.contact_form input:required.pass {
+	background: #fff url('../../assets/img/validate/valid.png') no-repeat 98% center;
+	box-shadow: 0 0 5px #5cd053;
+	border-color: #28921f;
+}
+.contact_form input:focus:invalid{
+	background: #fff url('../../assets/img/validate/invalid.png') no-repeat 98% center;
+	box-shadow: 0 0 5px #d45252;
+	border-color: #b03535
+}
+
+/* === Form hints === */
+.form_hint {
+	overflow: auto;
+	background: #d45252;
+	border-radius: 3px 3px 3px 3px;
+	color: white;
+	margin-left:8px;
+	padding: 1px 6px;
+	z-index: 999; 
+	position: absolute; /* allows proper formatting if hint is two lines */
+	right: -12rem;
+	top: 0;
+	display: none;
+}
+.form_hint::before {
+	content: "\25C0";
+	color:#d45252;
+	position: absolute;
+	top:1px;
+	left:-6px;
+}
+.contact_form input:focus + .form_hint {display: inline;}
+.contact_form input:required.pass + .form_hint {background: #28921f;}
+.contact_form input:required.pass+ .form_hint::before {color:#28921f;}

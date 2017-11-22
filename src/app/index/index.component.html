@@ -1,0 +1,21 @@
+<div id="wrapper">
+  <!-- 左侧菜单组件 -->
+  <navbarLeft></navbarLeft>
+  <!-- 右侧部分内容 start -->
+  <div id="page-wrapper" class="gray-bg dashbard-1">
+    <!-- 头部导航组件 -->
+    <navHeader></navHeader>
+    <!-- 右侧内容区域 -->
+    <div class="row J_mainContent" id="content-main">
+        <div class="J_iframe">
+          <router-outlet></router-outlet>
+        </div>
+        
+    </div>
+    <!-- 页尾组件 -->
+    <storeFooter></storeFooter>
+  </div>
+  <!-- 右侧部分内容 end -->
+  <!-- mini聊天组件 -->
+  <miniChat></miniChat>
+</div>

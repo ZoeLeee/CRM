@@ -1,0 +1,81 @@
+<!-- mini聊天窗口 -->
+<div class="small-chat-box fadeInRight animated" [ngClass]="{active:isShow}" >  
+    <div class="heading" draggable="true">
+        <small class="chat-date pull-right">
+            2015.9.1
+        </small> 与 Beau-zihan 聊天中
+    </div>
+    <div class="content" style="overflow:hidden">
+
+        <div class="left">
+            <div class="author-name">
+                Beau-zihan <small class="chat-date">
+                10:02
+            </small>
+            </div>
+            <div class="chat-message active">
+                你好
+            </div>
+
+        </div>
+        <div class="right">
+            <div class="author-name">
+                游客
+                <small class="chat-date">
+                    11:24
+                </small>
+            </div>
+            <div class="chat-message">
+                你好，请问可以该需求吗?
+            </div>
+        </div>
+        <div class="left">
+            <div class="author-name">
+                Beau-zihan
+                <small class="chat-date">
+                    08:45
+                </small>
+            </div>
+            <div class="chat-message active">
+                不可以
+            </div>
+        </div>
+        <div class="right">
+            <div class="author-name">
+                客户
+                <small class="chat-date">
+                    11:24
+                </small>
+            </div>
+            <div class="chat-message">
+                那可以帮忙处理bug吗?
+            </div>
+        </div>
+        <div class="left">
+            <div class="author-name">
+                Beau-zihan
+                <small class="chat-date">
+                    08:45
+                </small>
+            </div>
+            <div class="chat-message active">
+                不可以
+            </div>
+        </div>
+
+
+    </div>
+    <div class="form-chat">
+        <div class="input-group input-group-sm">
+            <input type="text" class="form-control"> <span class="input-group-btn"> <button
+                class="btn btn-primary" type="button">发送
+        </button> </span>
+        </div>
+    </div>
+</div>
+<div id="small-chat">
+    <span class="badge badge-warning pull-right">5</span>
+    <a class="open-small-chat" (click)="toggleShow()">
+        <i class="fa fa-comments"></i>
+    </a>
+</div>

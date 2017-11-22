@@ -1,0 +1,106 @@
+<div class="wrapper wrapper-content  animated fadeInRight">
+    <div class="row">
+        <div class="col-sm-8">
+            <div class="ibox">
+                <div class="ibox-content">
+                    <a  class="btn btn-primary btn-xs pull-right" (click)="showDialog()" pButton icon="fa-external-link-square" label="Show">新增客户</a>
+                    <h2>客户管理</h2>
+                    <p>
+                        所有客户必须通过邮件验证
+                    </p>
+                    <div class="input-group">
+                        <input type="text" placeholder="查找客户" class="input form-control" [(ngModel)]="keyword" (ngModelChange)="searchClient($event)" >
+                        <span class="input-group-btn">
+                                    <button type="button" class="btn btn btn-primary"> <i class="fa fa-search"></i> 搜索</button>
+                            </span>
+                    </div>
+                    <clientList (sendIdEmitter)="getClientDetail($event)" [searchClients]="clients"></clientList>  
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="ibox ">
+                <div class="ibox-content">
+                    <div class="tab-content" >
+                        <div class="tab-pane active">
+                            <div class="row m-b-lg">
+                                <div class="col-lg-4 text-center" *ngIf="clientDetail">
+                                    <h2>{{clientDetail.cname}}</h2>
+                                    <div class="m-b-sm">
+                                        <img alt="image" class="img-circle" [src]="clientDetail.avatar" style="width: 62px">
+                                    </div>
+                                </div>
+                                <div class="col-lg-8">
+                                    <h3>
+                                            个人详情
+                                    </h3>
+                                    <p>
+                                            袁岳 ，福州市海诚机械有限公司创始人、董事长兼首席执行官
+                                    </p>
+                                    
+                                    <p>
+                                        <button type="button" class="btn btn-primary btn-sm btn-block"><i class="fa fa-envelope"></i> 发送消息
+                                        </button>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="client-detail">
+                                <div class="full-height-scroll">
+                                    <strong>跟进记录</strong>
+                                    <ul class="list-group clear-list" *ngIf="clientProgress">
+                                        <li class="list-group-item fist-item" *ngFor="let progress of clientProgress">
+                                            <span class="pull-right">{{progress.time}}</span> {{progress.works}}
+                                        </li>
+                                    </ul>
+                                    <strong>备注</strong>
+                                    <p>
+                                        {{remark}}
+                                    </p>
+                                    <hr/>
+                                    <strong>跟进计划</strong>
+                                    <div id="vertical-timeline" class="vertical-container light-timeline" *ngIf="plans">
+                                        <div class="vertical-timeline-block"  *ngFor="let plan of plans">
+                                            <div class="vertical-timeline-icon navy-bg">
+                                                <i class="fa fa-briefcase"></i>
+                                            </div>
+
+                                            <div class="vertical-timeline-content">
+                                                <h2>计划</h2>
+                                                <p>
+                                                    {{plan.works}}
+                                                </p>
+                                                <a href="#" class="btn btn-sm btn-primary"> 更多信息</a>
+                                                <span class="vertical-date">
+                                                    <small>{{plan.time}}</small>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<p-dialog [(visible)]="display" modal="true" draggable="false" width="300">
+        <p-header>
+            创建新项目
+        </p-header>
+        <form action="">
+            <div class="form-grop">
+                <label for="">客户名称</label>
+                <input type="text" class="form-control">
+            </div>
+            <div class="form-grop">
+                <label for="">公司</label>
+                <input type="text" class="form-control">
+            </div>
+        </form>
+        <p-footer>
+            <button class="btn btn-default">取消</button>
+            <button class="btn btn-primary">确认</button>
+        </p-footer>
+    </p-dialog>

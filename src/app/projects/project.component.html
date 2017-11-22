@@ -1,0 +1,88 @@
+<div class="wrapper wrapper-content animated fadeInUp">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="ibox">
+                <div class="ibox-title">
+                    <h5>所有项目</h5>
+                    <div class="ibox-tools">
+                        <a  class="btn btn-primary btn-xs" (click)="showDialog()" pButton icon="fa-external-link-square" label="Show">创建新项目</a>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <div class="row m-b-sm m-t-sm">
+                        <div class="col-md-1">
+                            <button type="button" (click)="refrashPage()" id="loading-example-btn" class="btn btn-white btn-sm"><i class="fa fa-refresh" ></i> 刷新</button>
+                        </div>
+                        <!-- 搜索项目区 -->
+                        <div class="col-md-11">
+                            <div class="input-group">
+                                <input type="text" placeholder="请输入项目名称" class="input-sm form-control" [(ngModel)]="kw" (ngModelChange)="searchProject($event)"> 
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-sm btn-primary" (click)="searchProject($event)"> 搜索</button> 
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 项目列表 -->
+                    <div class="project-list">
+                    <table class="table table-hover">
+                        <tbody>
+                            <tr *ngFor="let project of projectInfo;let i=index">
+                                <td class="project-status">
+                                    <span class="label" 
+                                    [ngClass]="{'label-default':project.status==='取消','label-primary':project.status==='进行中','label-success':project.status==='完成'}" 
+                                  >
+                                      {{project.status}}
+                                    </span>
+                                </td>
+                                <td class="project-title">
+                                    <a [routerLink]='["/projectsDetail",{pid:project.pid,team:convertJson(teamsInfo[i])}]'>
+                                        {{project.pname}}
+                                    </a>
+                                    <p>
+                                        <small>创建于 {{project.create_time}}</small>
+                                    </p>
+                                </td>
+                                <td class="project-completion">
+                                        <small>当前进度{{project.progress}}%</small>
+                                        <div class="progress progress-mini">
+                                            <div [ngStyle]="{width:project.progress+'%'}" class="progress-bar"></div>
+                                        </div>
+                                </td>
+                                <td class="project-people" >
+                                    <a routerLink="/profile" *ngFor="let key of getKeys(teamsInfo[i]);let cid=index"><img alt="image" class="img-circle" [src]="teamsInfo[i][key]"></a>
+                                </td>
+                                <td class="project-actions">
+                                    <a routerLink="/projectDetail" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> 查看 </a>
+                                    <a class="btn btn-white btn-sm"><i class="fa fa-pencil"></i> 编辑 </a>
+                                </td>
+                            </tr>
+                           
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 创建新项目模态框 -->
+<p-dialog [(visible)]="display" modal="true" draggable="false" width="300">
+    <p-header>
+        创建新项目
+    </p-header>
+    <form action="">
+        <div class="form-grop">
+            <label for="">项目名称</label>
+            <input type="text" class="form-control">
+        </div>
+        <div class="form-grop">
+            <label for="">项目成员</label>
+            <input type="text" class="form-control">
+        </div>
+    </form>
+    <p-footer>
+        <button class="btn btn-default">取消</button>
+        <button class="btn btn-primary">创建</button>
+    </p-footer>
+</p-dialog>
