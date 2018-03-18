@@ -28,7 +28,7 @@ export class RegisterComponent implements OnInit {
   // 检查用户名是否可用及重复
   checkName(e){
     if(this.nameReg.test(e)){
-      this.myHttp.sendRequest("http://localhost/CRMData/data/user/check_uname.php?uname="+e)
+      this.myHttp.sendGetRequest("http://localhost/CRMData/data/user/check_uname.php?uname="+e)
       .subscribe((data:any)=>{
         // console.log(data);
         if(data.code==201){
@@ -68,7 +68,7 @@ export class RegisterComponent implements OnInit {
   }
   // 注册
   toRegister(){
-    this.myHttp.sendRequest("http://localhost/CRMData/data/user/register.php?uname="+this.uname+"&upwd="+this.upwd)
+    this.myHttp.sendGetRequest("http://localhost/CRMData/data/user/register.php?uname="+this.uname+"&upwd="+this.upwd)
     .subscribe((data:any)=>{
       if(data){
         if(data.code==200){

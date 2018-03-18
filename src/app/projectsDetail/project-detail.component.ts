@@ -20,7 +20,7 @@ export class ProjectDetailComponent implements OnInit {
     this.route.params.subscribe((data)=>{
       //  console.log(data);
       this.team=JSON.parse(data.team);
-      this.myHttp.sendRequest("http://localhost/CRMData/data/projects/project_details.php?pid="+data.pid).subscribe((data:any)=>{
+      this.myHttp.sendGetRequest("http://localhost/CRMData/data/projects/project_details.php?pid="+data.pid).subscribe((data:any)=>{
         if(data){
           if(data.code==200){
             // this.projectDetail=data.data;

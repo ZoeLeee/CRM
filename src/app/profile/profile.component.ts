@@ -20,7 +20,7 @@ export class ProfileComponent implements OnInit {
   }
   //获取用户资料
   getBasic(){
-    this.myHttp.sendRequest("http://localhost/CRMData/data/user/get_basic.php").subscribe((data:any)=>{
+    this.myHttp.sendGetRequest("http://localhost/CRMData/data/user/get_basic.php").subscribe((data:any)=>{
       // console.log(data);
       this.profile_img=data.profile_img;
       this.phone=data.phone;
@@ -35,7 +35,7 @@ export class ProfileComponent implements OnInit {
       this.isEdit=true;
       e.target.innerHTML="<i class='fa fa-coffee'></i>保存";
     }else{
-      this.myHttp.sendRequest("http://localhost/CRMData/data/user/update_basic.php?phone="+this.phone+"&email="+this.email+"&qq="+this.qq+"&user_name="+this.user_name).subscribe((data:any)=>{
+      this.myHttp.sendGetRequest("http://localhost/CRMData/data/user/update_basic.php?phone="+this.phone+"&email="+this.email+"&qq="+this.qq+"&user_name="+this.user_name).subscribe((data:any)=>{
         // console.log(data);
         if(data){
           if(data.code!=500){

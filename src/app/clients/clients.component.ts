@@ -37,7 +37,7 @@ export class ClientComponent implements OnInit {
   }
   // 搜索客户
   searchClient(e){
-    this.myHttp.sendRequest("http://localhost/CRMData/data/clients/clients.php?kw="+e,false).subscribe((data:any)=>{
+    this.myHttp.sendGetRequest("http://localhost/CRMData/data/clients/clients.php?kw="+e,false).subscribe((data:any)=>{
       // console.log(data);
       if(data){
         if(data.code==200){

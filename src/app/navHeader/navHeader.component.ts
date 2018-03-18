@@ -34,7 +34,7 @@ export class NavHeaderComponent implements OnInit {
   }
   // 退出登录
   loginOut(){
-    this.myHttp.sendRequest("http://localhost/CRMData/data/user/logout.php")
+    this.myHttp.sendGetRequest("http://localhost/CRMData/data/user/logout.php")
     .subscribe((data:any)=>{
       if(data){
         sessionStorage.setItem("isLogin","false");

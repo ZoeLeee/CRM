@@ -23,7 +23,7 @@ export class ProjectComponent implements OnInit {
   }
   //获取项目数据
   getProject(isLoad:boolean){
-    this.myHttp.sendRequest("http://localhost/CRMData/data/projects/projects.php?kw="+this.kw,isLoad)
+    this.myHttp.sendGetRequest("http://localhost/CRMData/data/projects/projects.php?kw="+this.kw,isLoad)
     .subscribe((data:any)=>{
       // console.log(data); 
       if(data){

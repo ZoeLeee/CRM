@@ -30,7 +30,7 @@ export class NavbarLeftComponent implements OnInit {
     this.toggle.toggleShow(index,this.isDrop);
   }
   getUserInfo(){
-    this.myHttp.sendRequest("http://localhost/CRMData/data/user/session_data.php").subscribe((data:any)=>{
+    this.myHttp.sendGetRequest("http://localhost/CRMData/data/user/session_data.php").subscribe((data:any)=>{
       // console.log("123");
       if(data){
         this.userInfo=data;

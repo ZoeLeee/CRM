@@ -24,7 +24,7 @@ export class ClientListComponent implements OnInit,OnChanges {
   }
   //获取客户信息
   getClient(){
-    this.myHttp.sendRequest("http://localhost/CRMData/data/clients/clients.php")
+    this.myHttp.sendGetRequest("http://localhost/CRMData/data/clients/clients.php")
     .subscribe((data:any)=>{
       if(data){
         // console.log(data);
