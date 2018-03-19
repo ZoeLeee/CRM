@@ -15,7 +15,6 @@ export class LoginComponent implements OnInit {
   constructor(private myHttp:MyHttpService,private router:Router) { }
   ngOnInit() { }
   toLogin(){
-    // console.log(this.uname);
     if(this.uname && this.upwd){
       this.myHttp.sendPostRequest("http://localhost:3000/users/login",{
         uname:this.uname,
