@@ -68,7 +68,7 @@ export class RegisterComponent implements OnInit {
   }
   // 注册
   toRegister(){
-    this.myHttp.sendGetRequest("http://localhost:3000/users/register/?uname="+this.uname+"&upwd="+this.upwd)
+    this.myHttp.sendGetRequest("http://localhost:3000/users/register?uname="+this.uname)
     .subscribe((data:any)=>{
       console.log(data);
       // if(data){
